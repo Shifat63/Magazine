@@ -51,4 +51,11 @@ public class ContentServiceImpl implements ContentService {
 		contentRepository.deleteAll();
 	}
 
+	@Override
+	public Set<Content> getSliderContents(Boolean isSlider) {
+		Set<Content> sliderContentSet = new HashSet<>();
+        contentRepository.findByIsSlider(isSlider).forEach(sliderContentSet::add);
+        return sliderContentSet;
+	}
+
 }

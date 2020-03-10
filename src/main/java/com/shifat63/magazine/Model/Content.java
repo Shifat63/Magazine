@@ -16,13 +16,15 @@ import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
-
 import org.springframework.lang.Nullable;
-
 import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.ToString;
 
 @Entity
 @Data
+@EqualsAndHashCode(exclude = {"user", "contentCategory", "ContentImageSet"})
+@ToString(exclude = {"user", "contentCategory", "ContentImageSet"})
 @Table(name = "content")
 public class Content implements Serializable {
 	
@@ -55,6 +57,9 @@ public class Content implements Serializable {
     
     @Column(name = "is_front")
     private Boolean isFront;
+    
+    @Column(name = "is_slider")
+    private Boolean isSlider;
     
     @Size(min = 0, max = 100, message = "Keywords must be less than 100 characters")
     @Column(name = "keyword")
