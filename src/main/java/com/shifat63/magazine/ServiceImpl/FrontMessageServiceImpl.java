@@ -51,4 +51,11 @@ public class FrontMessageServiceImpl implements FrontMessageService {
 		frontMessageRepository.deleteAll();
 	}
 
+	@Override
+	public Set<FrontMessage> getActiveFrontMessages(Boolean isActive) {
+		Set<FrontMessage> activeFrontMessageSet = new HashSet<>();
+		frontMessageRepository.findByIsActive(isActive).forEach(activeFrontMessageSet::add);
+        return activeFrontMessageSet;
+	}
+
 }

@@ -11,4 +11,5 @@ import com.shifat63.magazine.Model.Content;
 @Transactional
 public interface ContentRepository extends CrudRepository<Content, Integer> {
 	Set<Content> findByIsSlider(Boolean isSlider);
+	Set<Content> findByIsFront(Boolean isFront);
 }

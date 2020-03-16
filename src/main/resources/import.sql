@@ -46,10 +46,12 @@ insert into content_image (location, position, content_id) values ('/resources/i
 
 insert into event (name, description, place, datetime, organizer, link, image_location, is_front, ticket_price) values ('Test event 1', 'Test event 1 description', 'Test event 1 address', '2020-03-19', 'Test event 1 organizer', 'https://www.google.de/', '/resources/images/eventImage/1.jpg', 0, 9.50);
 insert into event (name, description, place, datetime, organizer, link, image_location, is_front, ticket_price) values ('Test event 2', 'Test event 2 description', 'Test event 2 address', '2020-03-29', 'Test event 2 organizer', 'https://www.xing.com/', '/resources/images/eventImage/2.jpg', 1, 7.50);
-insert into event (name, description, place, datetime, organizer, link, image_location, is_front, ticket_price) values ('Test event 3', 'Test event 3 description', 'Test event 3 address', '2020-05-25', 'Test event 3 organizer', 'https://github.com/', '/resources/images/eventImage/3.jpg', 0, 11.70);
+insert into event (name, description, place, datetime, organizer, link, image_location, is_front, ticket_price) values ('Test event 3', 'Test event 3 description', 'Test event 3 address', '2020-05-25', 'Test event 3 organizer', 'https://github.com/', '/resources/images/eventImage/3.jpg', 1, 11.70);
 
-insert into front_message (message_body, is_active) values ('message body 1', 0)
+insert into front_message (message_body, is_active) values ('message body 1', 1)
 insert into front_message (message_body, is_active) values ('message body 2', 1)
+insert into front_message (message_body, is_active) values ('message body 3', 0)
+insert into front_message (message_body, is_active) values ('message body 4', 1)
 
 insert into contact_ticket (first_name, last_name, email, description) values ('Jasim', 'Uddin', 'jasim@test.com', 'Problem 1 description');
 insert into contact_ticket (first_name, last_name, email, description) values ('Kazi', 'Nazrul', 'kazi@test.com', 'Problem 2 description');

@@ -9,31 +9,31 @@
         <title th:text="#{title}">Magazine</title>
         <link rel="stylesheet" th:href="@{/resources/css/bootstrap.min.css}"/>
         <link rel="stylesheet" th:href="@{/resources/css/owl.carousel.min.css}">
-        <link rel="stylesheet" th:href="@{/resources/css/magnific-popup.css}">
+        <!-- <link rel="stylesheet" th:href="@{/resources/css/magnific-popup.css}"> -->
 	    <link rel="stylesheet" th:href="@{/resources/css/font-awesome.min.css}">
 	    <link rel="stylesheet" th:href="@{/resources/css/themify-icons.css}">
-	    <link rel="stylesheet" th:href="@{/resources/css/nice-select.css}">
-	    <link rel="stylesheet" th:href="@{/resources/css/flaticon.css}">
-	    <link rel="stylesheet" th:href="@{/resources/css/animate.css}">
+	    <!-- <link rel="stylesheet" th:href="@{/resources/css/nice-select.css}"> -->
+	    <!-- <link rel="stylesheet" th:href="@{/resources/css/flaticon.css}"> -->
+	    <!-- <link rel="stylesheet" th:href="@{/resources/css/animate.css}"> -->
 	    <link rel="stylesheet" th:href="@{/resources/css/slicknav.css}">
 	    <link rel="stylesheet" th:href="@{/resources/css/style.css}">
-	    <script th:src="@{/resources/js/vendor/modernizr-3.5.0.min.js}"></script>
+	    <!-- <script th:src="@{/resources/js/vendor/modernizr-3.5.0.min.js}"></script> -->
 	    <script th:src="@{/resources/js/vendor/jquery-1.12.4.min.js}"></script>
-	    <script th:src="@{/resources/js/vendor/popper.min.js}"></script>
+	    <!-- <script th:src="@{/resources/js/vendor/popper.min.js}"></script> -->
 	    <script th:src="@{/resources/js/bootstrap.min.js}"></script>
 	    <script th:src="@{/resources/js/owl.carousel.min.js}"></script>
-	    <script th:src="@{/resources/js/isotope.pkgd.min.js}"></script>
-	    <script th:src="@{/resources/js/ajax-form.js}"></script>
-	    <script th:src="@{/resources/js/waypoints.min.js}"></script>
-	    <script th:src="@{/resources/js/jquery.counterup.min.js}"></script>
-	    <script th:src="@{/resources/js/imagesloaded.pkgd.min.js}"></script>
-	    <script th:src="@{/resources/js/scrollIt.js}"></script>
-	    <script th:src="@{/resources/js/jquery.scrollUp.min.js}"></script>
-	    <script th:src="@{/resources/js/wow.min.js}"></script>
-	    <script th:src="@{/resources/js/nice-select.min.js}"></script>
+	    <!-- <script th:src="@{/resources/js/isotope.pkgd.min.js}"></script> -->
+	    <!-- <script th:src="@{/resources/js/ajax-form.js}"></script> -->
+	    <!-- <script th:src="@{/resources/js/waypoints.min.js}"></script> -->
+	    <!-- <script th:src="@{/resources/js/jquery.counterup.min.js}"></script> -->
+	    <!-- <script th:src="@{/resources/js/imagesloaded.pkgd.min.js}"></script> -->
+	    <!-- <script th:src="@{/resources/js/scrollIt.js}"></script> -->
+	    <!-- <script th:src="@{/resources/js/jquery.scrollUp.min.js}"></script> -->
+	    <!-- <script th:src="@{/resources/js/wow.min.js}"></script> -->
+	    <!-- <script th:src="@{/resources/js/nice-select.min.js}"></script> -->
 	    <script th:src="@{/resources/js/jquery.slicknav.min.js}"></script>
-	    <script th:src="@{/resources/js/jquery.magnific-popup.min.js}"></script>
-	    <script th:src="@{/resources/js/plugins.js}"></script>
+	    <!-- <script th:src="@{/resources/js/jquery.magnific-popup.min.js}"></script> -->
+	    <!-- <script th:src="@{/resources/js/plugins.js}"></script> -->
 	    <script th:src="@{/resources/js/main.js}"></script>
     </head>
     <body>
@@ -47,7 +47,7 @@
 	                                <nav>
 	                                    <ul id="navigation">
 	                                        <li><a th:href="@{/}">Home</a></li>
-	                                        <li><a th:href="@{/about}">About</a></li>
+	                                        <li><a href="#about_area">About</a></li>
 	                                        <li><a th:href="@{/contact}">Contact</a></li>
 	                                        <li><a th:href="@{/content}">Blog</a></li>
 	                                        <li><a th:href="@{/event}">Events</a></li>
@@ -55,6 +55,13 @@
 	                                </nav>
 	                            </div>
 	                        </div>
+	                        <div class="col-xl-2 col-lg-2">
+                            <div class="logo-img">
+                                <a th:href="@{/}">
+                                    <img th:src="@{/resources/images/logo.jpg}" alt="logo">
+                                </a>
+                            </div>
+                        </div>
 	                        <div class="col-xl-5 col-lg-5 d-none d-lg-block">
 	                            <div class="book_room">
 	                                <div class="socail_links">
@@ -83,45 +90,50 @@
 	                                </div>
 	                            </div>
 	                        </div>
+	                        <div class="col-12">
+	                            <div class="mobile_menu d-block d-lg-none"></div>
+	                        </div>
 	                    </div>
 	                </div>
 	            </div>
 	        </div>
 	    </header>
+	    
 	    <div>
 	    	<th:block th:include="${template}"/>
             <br/>
             <br/>
 	    </div>
+	    
         <footer class="footer">
             <div class="footer_top">
                 <div class="container">
                     <div class="row justify-content-center">
                         <div class="col-lg-4">
                             <div class="socail_links text-center">
-                                    <ul>
-                                        <li>
-                                            <a href="#">
-                                                <i class="ti-instagram"></i>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                <i class="ti-twitter-alt"></i>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                <i class="ti-facebook"></i>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                <i class="fa fa-google-plus"></i>
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </div>
+                               <ul>
+                                   <li>
+                                       <a href="#">
+                                           <i class="ti-instagram"></i>
+                                       </a>
+                                   </li>
+                                   <li>
+                                       <a href="#">
+                                           <i class="ti-twitter-alt"></i>
+                                       </a>
+                                   </li>
+                                   <li>
+                                       <a href="#">
+                                           <i class="ti-facebook"></i>
+                                       </a>
+                                   </li>
+                                   <li>
+                                       <a href="#">
+                                           <i class="fa fa-google-plus"></i>
+                                       </a>
+                                   </li>
+                               </ul>
+                           	</div>
                         </div>
                     </div>
                 </div>

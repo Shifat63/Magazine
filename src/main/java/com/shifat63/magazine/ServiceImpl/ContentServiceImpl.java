@@ -58,4 +58,11 @@ public class ContentServiceImpl implements ContentService {
         return sliderContentSet;
 	}
 
+	@Override
+	public Set<Content> getFrontContents(Boolean isFront) {
+		Set<Content> frontContentSet = new HashSet<>();
+        contentRepository.findByIsFront(isFront).forEach(frontContentSet::add);
+        return frontContentSet;
+	}
+
 }

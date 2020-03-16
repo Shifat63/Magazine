@@ -51,4 +51,11 @@ public class EventServiceImpl implements EventService {
 		eventRepository.deleteAll();
 	}
 
+	@Override
+	public Set<Event> getFrontEvents(Boolean isFront) {
+		Set<Event> frontEventSet = new HashSet<>();
+		eventRepository.findByIsFront(isFront).forEach(frontEventSet::add);
+        return frontEventSet;
+	}
+
 }
