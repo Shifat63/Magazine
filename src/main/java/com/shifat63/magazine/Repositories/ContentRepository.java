@@ -12,4 +12,5 @@ import com.shifat63.magazine.Model.Content;
 public interface ContentRepository extends CrudRepository<Content, Integer> {
 	Set<Content> findByIsSlider(Boolean isSlider);
 	Set<Content> findByIsFront(Boolean isFront);
+	Set<Content> findAllByKeywordContaining(String keyword);
 }

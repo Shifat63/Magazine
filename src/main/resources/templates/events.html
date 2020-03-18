@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+
+<html xmlns:th="https://www.thymeleaf.org" th:replace="~{fragments/layoutBeforeLogin :: layout (~{::body},'home')}">
+
+<body>
+<!-- content_area_strat -->
+<section class="content_page_area section-padding">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 mb-5 mb-lg-0">
+                <div class="blog_left_sidebar">
+                    <article class="content_page_item" th:each="event, i : ${events}">
+                        <div class="content_page_item_img">
+                            <img class="card-img rounded-0" th:src="@{/resources/images/eventImage/__${event.getEventId()}__.jpg}" alt="Event Image">
+                            <a href="" class="content_page_item_date">
+                                <h3 th:text="${'$' + event.getTicketPrice()}">Event ticket price</h3>
+                                <p th:text="${event.getDatetime()}">Event schedule</p>
+                            </a>
+                        </div>
+
+                        <div class="content_page_item_details">
+                            <a th:href="${event.getLink()}" class="d-inline-block">
+                                <h2 th:text="${event.getName()}">Event name</h2>
+                            </a>
+                            <h4><b>Organizer: </b><span th:text="${event.getOrganizer()}"></span></h4>
+                            <h4><b>Location: </b><span th:text="${event.getPlace()}"></span></h4>
+                            <p th:text="${event.getDescription()}">
+                                Event description
+                            </p>
+                        </div>
+                    </article>
+
+                    <!-- <nav class="content_page_pagination justify-content-center d-flex">
+                        <ul class="pagination">
+                            <li class="page-item">
+                                <a href="#" class="page-link" aria-label="Previous">
+                                    <i class="ti-angle-left"></i>
+                                </a>
+                            </li>
+                            <li class="page-item">
+                                <a href="#" class="page-link">1</a>
+                            </li>
+                            <li class="page-item active">
+                                <a href="#" class="page-link">2</a>
+                            </li>
+                            <li class="page-item">
+                                <a href="#" class="page-link" aria-label="Next">
+                                    <i class="ti-angle-right"></i>
+                                </a>
+                            </li>
+                        </ul>
+                    </nav> -->
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+</body>
+
+</html>

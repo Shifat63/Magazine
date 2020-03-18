@@ -22,15 +22,10 @@ public class ContactTicket implements Serializable {
 	@Column(name = "contact_ticket_id")
     private Integer contactTicketId;
 	
-	@NotBlank(message = "First name must not be empty")
-    @Size(min = 1, max = 50, message = "First name must be between 1 to 50 characters")
-    @Column(name = "first_name")
-    private String firstName;
-
-    @NotBlank(message = "Last name must not be empty")
-    @Size(min = 1, max = 50, message = "Last name must be between 1 to 50 characters")
-    @Column(name = "last_name")
-    private String lastName;
+	@NotBlank(message = "Name must not be empty")
+    @Size(min = 1, max = 100, message = "Name must be between 1 to 100 characters")
+    @Column(name = "name")
+    private String name;
     
     @Email
     @NotBlank(message = "Email must not be empty")

@@ -55,9 +55,6 @@ public class Event implements Serializable {
     @Column(name = "link")
     private String link;
     
-    @Column(name = "image_location")
-    private String imageLocation;
-    
     @Column(name = "is_front")
     private Boolean isFront;
     

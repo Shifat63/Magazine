@@ -2,6 +2,8 @@ package com.shifat63.magazine.ServiceImpl;
 
 import java.util.HashSet;
 import java.util.Set;
+
+import com.shifat63.magazine.Model.ContentCategory;
 import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Service;
 import com.shifat63.magazine.Model.Content;
@@ -19,9 +21,9 @@ public class ContentServiceImpl implements ContentService {
 	
 	@Override
 	public Set<Content> findAll() throws Exception {
-		Set<Content> ContentSet = new HashSet<>();
-        contentRepository.findAll().forEach(ContentSet::add);
-        return ContentSet;
+		Set<Content> contentSet = new HashSet<>();
+		contentRepository.findAll().forEach(contentSet::add);
+        return contentSet;
 	}
 
 	@Override
@@ -42,7 +44,7 @@ public class ContentServiceImpl implements ContentService {
 
 	@Override
 	public void deleteById(Integer id) throws Exception {
-		contentRepository.deleteById(id);;
+		contentRepository.deleteById(id);
 		
 	}
 
@@ -63,6 +65,13 @@ public class ContentServiceImpl implements ContentService {
 		Set<Content> frontContentSet = new HashSet<>();
         contentRepository.findByIsFront(isFront).forEach(frontContentSet::add);
         return frontContentSet;
+	}
+
+	@Override
+	public Set<Content> getContentsSearchedByKeyword(String keyword) {
+		Set<Content> contentSet = new HashSet<>();
+		contentRepository.findAllByKeywordContaining(keyword).forEach(contentSet::add);
+		return contentSet;
 	}
 
 }

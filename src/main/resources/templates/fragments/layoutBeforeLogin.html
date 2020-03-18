@@ -47,10 +47,10 @@
 	                                <nav>
 	                                    <ul id="navigation">
 	                                        <li><a th:href="@{/}">Home</a></li>
-	                                        <li><a href="#about_area">About</a></li>
-	                                        <li><a th:href="@{/contact}">Contact</a></li>
-	                                        <li><a th:href="@{/content}">Blog</a></li>
-	                                        <li><a th:href="@{/event}">Events</a></li>
+	                                        <!-- <li><a href="#about_area">About</a></li>
+	                                        <li><a href="#contact_area">Contact</a></li> -->
+	                                        <li><a th:href="@{/contents}">Contents</a></li>
+	                                        <li><a th:href="@{/events}">Events</a></li>
 	                                    </ul>
 	                                </nav>
 	                            </div>
@@ -99,10 +99,26 @@
 	        </div>
 	    </header>
 	    
+	    <!-- slider_area_start -->
+	    <div class="slider_area">
+	        <div class="slider_active owl-carousel">
+	            <div class="single_slider  d-flex align-items-center overlay" th:each="slider, i : ${sliders}" th:style="'background-image:url(' + @{/resources/images/contentImage/__${slider.getContentId()}__/banner.jpg} + ');'" >
+	                <div class="container">
+	                    <div class="row align-items-center justify-content-center">
+	                        <div class="col-xl-9 col-md-9 col-md-12">
+	                            <div class="slider_text text-center">
+	                                <h4 th:text="${slider.getHeadline()}"></h4>
+	                            </div>
+	                        </div>
+	                    </div>
+	                </div>
+	            </div>
+	        </div>
+	    </div>
+	    <!-- slider_area_end -->
+	    
 	    <div>
 	    	<th:block th:include="${template}"/>
-            <br/>
-            <br/>
 	    </div>
 	    
         <footer class="footer">

@@ -3,26 +3,8 @@
 <html xmlns:th="https://www.thymeleaf.org" th:replace="~{fragments/layoutBeforeLogin :: layout (~{::body},'home')}">
 
 <body>
-	<!-- slider_area_start -->
-    <div class="slider_area">
-        <div class="slider_active owl-carousel">
-            <div class="single_slider  d-flex align-items-center overlay" th:each="slider, i : ${sliders}" th:style="'background-image:url(' + @{/resources/images/contentImage/__${slider.getContentId()}__/banner.jpg} + ');'" >
-                <div class="container">
-                    <div class="row align-items-center justify-content-center">
-                        <div class="col-xl-9 col-md-9 col-md-12">
-                            <div class="slider_text text-center">
-                                <h4 th:text="${slider.getHeadline()}"></h4>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- slider_area_end -->
-
 	<!-- content_area_strat -->
-    <div class="front_content_area">
+    <div class="front_content_area" id="content_area">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
@@ -38,7 +20,7 @@
                             <img th:src="@{/resources/images/contentImage/__${frontContent.getContentId()}__/banner.jpg}" alt="Content image" />
                         </div>
                         <div class="info">
-                            <h3 th:text="${frontContent.getHeadline()}">Content Headline</h3>
+                            <h3><a th:text="${frontContent.getHeadline()}" th:href="@{/contents/__${frontContent.getContentId()}__}">Content Headline</a></h3>
                             <p th:text="${frontContent.getTeaser()}">Content Teaser</p>
                         </div>
                     </div>
@@ -47,7 +29,7 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="iteam_links">
-                        <a class="boxed-btn5" href="Menu.html">More Items</a>
+                        <a class="boxed-btn5" th:href="@{/contents}">More Contents</a>
                     </div>
                 </div>
             </div>
@@ -57,7 +39,7 @@
     
     
     <!-- event_area_strat -->
-    <div class="event_area">
+    <div class="event_area" id="event_area">
         <div class="event_here">
             <div class="single_event" th:each="frontEvent, i : ${frontEvents}">
                 <div class="room_thumb">
@@ -67,7 +49,7 @@
                         	<span th:text="${frontEvent.getDatetime()}">Event date</span>
                         	<h3 th:text="${frontEvent.getName()}">Event name</h3>
                             <p th:text="${frontEvent.getPlace()}">Event place</p>
-                            <a href="#" class="boxed-btn3">View Details</a>
+                            <a th:href="@{/events}" class="boxed-btn3">View All</a>
                         </div>
                     </div>
                 </div>
@@ -75,7 +57,7 @@
         </div>
     </div>
     <!-- event_area_end -->
-    
+
     <!-- message_area_start  -->
     <div class="message_area ">
         <div class="container">
@@ -130,6 +112,84 @@
         </div>
     </div>
     <!-- about_area_end -->
+
+    <!-- contact_area_start -->
+    <section class="contact-section" id="contact_area">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <h2 class="contact-title">Get in Touch</h2>
+                </div>
+                <div class="col-lg-8">
+                    <form th:action="@{/contactTicket}" th:object="${contactTicket}" id="contactForm" class="form-contact contact_form was-validated" method="post">
+                        <div class="row">
+                            <div th:if="${#fields.hasErrors('*')}" class="alert alert-danger">
+                                <p>Please correct the following errors.</p>
+                            </div>
+                            <input type="hidden" th:field="*{contactTicketId}" id="contactTicketId" name="contactTicketId">
+                            <div class="col-12">
+                                <div class="form-group">
+                                    <textarea th:field="*{description}" th:errorclass="has-error" class="form-control w-100" name="description" id="description" cols="30" rows="9" placeholder=" Enter Message"></textarea>
+                                    <div th:if="${#fields.hasErrors('description')}" class="alert alert-danger">
+                                        <ul>
+                                            <li th:each="err : ${#fields.errors('description')}" th:text="${err}" ></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <input th:field="*{name}" th:errorclass="has-error" class="form-control valid" name="name" id="name" type="text" placeholder="Enter your name">
+                                    <div th:if="${#fields.hasErrors('name')}" class="alert alert-danger">
+                                        <ul>
+                                            <li th:each="err : ${#fields.errors('name')}" th:text="${err}" ></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <input th:field="*{email}" th:errorclass="has-error" class="form-control valid" name="email" id="email" type="text" placeholder="Enter your email">
+                                    <div th:if="${#fields.hasErrors('email')}" class="alert alert-danger">
+                                        <ul>
+                                            <li th:each="err : ${#fields.errors('email')}" th:text="${err}" ></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group mt-3">
+                            <button type="submit" class="button button-contactForm boxed-btn">Send</button>
+                        </div>
+                    </form>
+                </div>
+                <div class="col-lg-3 offset-lg-1">
+                    <div class="media contact-info">
+                        <span class="contact-info__icon"><i class="ti-home"></i></span>
+                        <div class="media-body">
+                            <h3>Bad Godesberg, Bonn</h3>
+                            <p>Germany, 53717</p>
+                        </div>
+                    </div>
+                    <div class="media contact-info">
+                        <span class="contact-info__icon"><i class="ti-tablet"></i></span>
+                        <div class="media-body">
+                            <h3>+1 253 565 2365</h3>
+                            <p>Mon to Fri 9am to 6pm</p>
+                        </div>
+                    </div>
+                    <div class="media contact-info">
+                        <span class="contact-info__icon"><i class="ti-email"></i></span>
+                        <div class="media-body">
+                            <h3>support@test.com</h3>
+                            <p>Send us your query anytime!</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- contact_area_end -->
     
 </body>
 
