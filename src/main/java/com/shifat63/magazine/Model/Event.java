@@ -14,6 +14,7 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import org.hibernate.validator.constraints.URL;
 import lombok.Data;
+import org.springframework.format.annotation.DateTimeFormat;
 
 
 @Entity
@@ -41,8 +42,9 @@ public class Event implements Serializable {
     @Column(name = "place")
     private String place;
 	
-//	@DateTimeFormat(pattern = "dd-MM-yyyy")
-    @Future(message = "Event time must be in future")
+	@DateTimeFormat(pattern = "dd-MM-yyyy")
+    @NotNull(message = "Event Date must not be empty")
+    @Future(message = "Event Date must be in future")
     @Column(name = "datetime")
     private LocalDate datetime;
     
@@ -51,7 +53,7 @@ public class Event implements Serializable {
     @Column(name = "organizer")
     private String organizer;
     
-    @URL
+    @URL(message = "Please provide a valid URL")
     @Column(name = "link")
     private String link;
     

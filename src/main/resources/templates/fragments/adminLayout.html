@@ -1,0 +1,86 @@
+<!doctype html>
+<html th:fragment="layout (template, menu)">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" type="image/x-icon" th:href="@{/resources/images/favicon.png}">
+
+    <title th:text="#{title}">Magazine</title>
+
+    <link rel="stylesheet" th:href="@{/resources/css/bootstrap.min.css}"/>
+    <script th:src="@{/resources/js/vendor/jquery-1.12.4.min.js}"></script>
+    <script th:src="@{/resources/js/bootstrap.min.js}"></script>
+</head>
+<body>
+<!-- Navigation -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top">
+    <div class="container">
+        <a class="navbar-brand" th:href="@{/index}"><img th:src="@{/resources/images/logo.jpg}" alt="logo"></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <div class="dropdown">
+                        <a class="nav-link dropdown-toggle active" data-toggle="dropdown" href="#">User</a>
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item" th:href="@{/user}">View All</a>
+                            <a class="dropdown-item" th:href="@{/user/add}">Add</a>
+                        </div>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <div class="dropdown">
+                        <a class="nav-link dropdown-toggle active" data-toggle="dropdown" href="#">Category</a>
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item" th:href="@{/contentCategory}">View All</a>
+                            <a class="dropdown-item" th:href="@{/contentCategory/add}">Add</a>
+                        </div>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <div class="dropdown">
+                        <a class="nav-link dropdown-toggle active" data-toggle="dropdown" href="#">Message</a>
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item" th:href="@{/message}">View All</a>
+                            <a class="dropdown-item" th:href="@{/message/add}">Add</a>
+                        </div>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <div class="dropdown">
+                        <a class="nav-link dropdown-toggle active" data-toggle="dropdown" href="#">Event</a>
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item" th:href="@{/event}">View All</a>
+                            <a class="dropdown-item" th:href="@{/event/add}">Add</a>
+                        </div>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <div class="dropdown">
+                        <a class="nav-link active" th:href="@{/contactTicket}">Tickets</a>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<div class="container-fluid">
+    <div class="container xd-container">
+        <th:block th:include="${template}"/>
+        <br/>
+        <br/>
+        <div class="container">
+            <div class="row">
+                <div class="col-12 text-center">
+                    <img src="../static/resources/images/spring-pivotal-logo.png" th:src="@{/resources/images/spring-pivotal-logo.png}" alt="Sponsored by Pivotal"/>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

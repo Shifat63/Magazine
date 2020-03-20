@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org" th:replace="~{fragments/adminLayout :: layout (~{::body},'adminPanel')}">
+<body>
+<h1 th:text="'Contact Tickets'"></h1>
+<table id="contactTickets" class="table table-striped table-hover">
+    <thead>
+    <tr>
+        <th>Serial</th>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Description</th>
+        <th>Delete</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="contactTicket, i : ${contactTickets}">
+        <td th:text="${i.count}">
+        </td>
+        <td th:text="${contactTicket.getName()}">
+        </td>
+        <td th:text="${contactTicket.getEmail()}">
+        </td>
+        <td th:text="${contactTicket.getDescription()}">
+        </td>
+        <td>
+            <a th:href="@{/contactTicket/delete/__${contactTicket.getContactTicketId()}__}">Delete</a>
+        </td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>
+

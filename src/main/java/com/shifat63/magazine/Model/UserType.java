@@ -13,10 +13,14 @@ import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.ToString;
 
 @Entity
 @Data
 @Table(name = "user_type")
+@EqualsAndHashCode(exclude = {"userSet"})
+@ToString(exclude = {"userSet"})
 public class UserType implements Serializable {
 	
 	@Id

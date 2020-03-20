@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org" th:replace="~{fragments/adminLayout :: layout (~{::body},'adminPanel')}">
+<body>
+<h1 th:if="${event.getEventId()==null}" th:text="'Add Event'"></h1>
+<h1 th:unless="${event.getEventId()==null}" th:text="'Edit Event'"></h1>
+<form action="#" th:action="@{/event/addOrEditEvent}" th:object="${event}" class="was-validated" method="post">
+    <div th:if="${#fields.hasErrors('*')}" class="alert alert-danger">
+        <p>Please correct the following errors.</p>
+    </div>
+    <input type="hidden" th:field="*{eventId}" id="eventId" name="eventId">
+    <div class="form-group">
+        <label for="name">Event Name:</label>
+        <input type="text" th:field="*{name}" th:errorclass="has-error" class="form-control" id="name" placeholder="Enter Event Name" name="name" required>
+        <div class="invalid-feedback">Please provide Event Name.</div>
+        <div th:if="${#fields.hasErrors('name')}" class="alert alert-danger">
+            <ul>
+                <li th:each="err : ${#fields.errors('name')}" th:text="${err}" ></li>
+            </ul>
+        </div>
+    </div>
+    <div class="form-group">
+        <label>Event Description: </label>
+        <textarea class="form-control" rows="3" th:field="*{description}"></textarea>
+        <div class="alert alert-danger" th:if="${#fields.hasErrors('description')}">
+            <ul>
+                <li th:each="err : ${#fields.errors('description')}" th:text="${err}"/>
+            </ul>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="place">Event Location:</label>
+        <input type="text" th:field="*{place}" class="form-control" id="place" placeholder="Enter Event Location" name="place" required>
+        <div class="invalid-feedback">Please provide Event Location.</div>
+        <div th:if="${#fields.hasErrors('place')}" class="alert alert-danger">
+            <ul>
+                <li th:each="err : ${#fields.errors('place')}" th:text="${err}" ></li>
+            </ul>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="datetime">Event Date:</label>
+        <input type="text" th:field="*{datetime}" class="form-control" id="datetime" placeholder="Enter Event Date(dd-MM-yyyy)" name="datetime" required>
+        <div class="invalid-feedback">Please provide Event Date.</div>
+        <div th:if="${#fields.hasErrors('datetime')}" class="alert alert-danger">
+            <ul>
+                <li th:each="err : ${#fields.errors('datetime')}" th:text="${err}" ></li>
+            </ul>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="organizer">Event Organizer:</label>
+        <input type="text" th:field="*{organizer}" class="form-control" id="organizer" placeholder="Enter Event Organizer" name="organizer" required>
+        <div class="invalid-feedback">Please provide Event Organizer.</div>
+        <div th:if="${#fields.hasErrors('organizer')}" class="alert alert-danger">
+            <ul>
+                <li th:each="err : ${#fields.errors('organizer')}" th:text="${err}" ></li>
+            </ul>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="link">Event URL:</label>
+        <input type="text" th:field="*{link}" class="form-control" id="link" placeholder="Enter Event URL" name="link">
+        <div class="invalid-feedback">Please provide Event URL.</div>
+        <div th:if="${#fields.hasErrors('link')}" class="alert alert-danger">
+            <ul>
+                <li th:each="err : ${#fields.errors('link')}" th:text="${err}" ></li>
+            </ul>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="ticketPrice">Event Ticket Price:</label>
+        <input type="text" th:field="*{ticketPrice}" class="form-control" id="ticketPrice" placeholder="Enter Event Ticket Price" name="ticketPrice" required>
+        <div class="invalid-feedback">Please provide Event Ticket Price.</div>
+        <div th:if="${#fields.hasErrors('ticketPrice')}" class="alert alert-danger">
+            <ul>
+                <li th:each="err : ${#fields.errors('ticketPrice')}" th:text="${err}" ></li>
+            </ul>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="isFront">Show on Front Page:</label>
+        <select th:field="*{isFront}" name="isFront" id="isFront" class="form-control browser-default custom-select">
+            <option value="false">No</option>
+            <option value="true">Yes</option>
+        </select>
+        <div th:if="${#fields.hasErrors('isFront')}" class="alert alert-danger">
+            <ul>
+                <li th:each="err : ${#fields.errors('isFront')}" th:text="${err}" ></li>
+            </ul>
+        </div>
+    </div>
+    <button type="submit" class="btn btn-primary">Save</button>
+</form>
+</body>
+</html>
+

@@ -18,12 +18,17 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Past;
 import javax.validation.constraints.Size;
+
+import lombok.EqualsAndHashCode;
+import lombok.ToString;
 import org.springframework.format.annotation.DateTimeFormat;
 import lombok.Data;
 
 @Entity
 @Data
 @Table(name="user")
+@EqualsAndHashCode(exclude = {"userType", "contentSet"})
+@ToString(exclude = {"userType", "contentSet"})
 public class User implements Serializable {
 
 	@Id
@@ -51,7 +56,8 @@ public class User implements Serializable {
     @DateTimeFormat(pattern = "dd-MM-yyyy")
     @Column(name = "birth_date")
     private LocalDate birthDate;
-    
+
+    @Size(min = 6, max = 20, message = "Password must be between 6 to 20 characters")
     @Column(name = "password")
     private String password;
     

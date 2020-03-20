@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org" th:replace="~{fragments/adminLayout :: layout (~{::body},'adminPanel')}">
+<body>
+<h1 th:text="'Event Details'"></h1>
+<table id="eventDetails" class="table table-striped table-hover">
+    <tr>
+        <th>Event Name: </th>
+        <td th:text="${event.getName()}"></td>
+    </tr>
+    <tr>
+        <th>Event Description: </th>
+        <td th:text="${event.getDescription()}"></td>
+    </tr>
+    <tr>
+        <th>Event Location: </th>
+        <td th:text="${event.getPlace()}"></td>
+    </tr>
+    <tr>
+        <th>Event Date: </th>
+        <td th:text="${event.getDatetime()}"></td>
+    </tr>
+    <tr>
+        <th>Event Organizer: </th>
+        <td th:text="${event.getOrganizer()}"></td>
+    </tr>
+    <tr>
+        <th>Event URL: </th>
+        <td><a th:text="${event.getLink()}" th:href="${event.getLink()}"></a></td>
+    </tr>
+    <tr>
+        <th>Event Ticket Price: </th>
+        <td th:text="${event.getTicketPrice()}"></td>
+    </tr>
+    <tr>
+        <th>Show on Front Page: </th>
+        <td>
+            <span th:if="${event.getIsFront() == true}" th:text="'Yes'"></span>
+            <span th:unless="${event.getIsFront() == true}" th:text="'No'"></span>
+        </td>
+    </tr>
+    <tr>
+        <td></td>
+        <td>
+            <a class="btn btn-outline-info" th:href="@{'/event/edit/' + ${event.getEventId()}}">Edit</a>
+        </td>
+    </tr>
+</table>
+</body>
+</html>
+

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org" th:replace="~{fragments/adminLayout :: layout (~{::body},'adminPanel')}">
+<body>
+<h1 th:text="'Content Categories'"></h1>
+<table id="contentCategories" class="table table-striped table-hover">
+    <thead>
+    <tr>
+        <th>Serial</th>
+        <th>Name</th>
+        <th>Edit</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="contentCategory, i : ${contentCategories}">
+        <td th:text="${i.count}">
+        </td>
+        <td th:text="${contentCategory.getName()}">
+        </td>
+        <td>
+            <a th:href="@{/contentCategory/edit/__${contentCategory.getContentCategoryId()}__}">Edit</a>
+        </td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>
+

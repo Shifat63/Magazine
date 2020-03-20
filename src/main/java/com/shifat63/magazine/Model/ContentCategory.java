@@ -13,10 +13,14 @@ import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.ToString;
 
 @Entity
 @Data
 @Table(name = "content_category")
+@EqualsAndHashCode(exclude = {"contentSet"})
+@ToString(exclude = {"contentSet"})
 public class ContentCategory implements Serializable {
 	
 	@Id

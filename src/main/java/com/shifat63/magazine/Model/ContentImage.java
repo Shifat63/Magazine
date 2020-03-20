@@ -11,10 +11,14 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.ToString;
 
 @Entity
 @Data
 @Table(name = "content_image")
+@EqualsAndHashCode(exclude = {"content"})
+@ToString(exclude = {"content"})
 public class ContentImage implements Serializable {
 	
 	@Id

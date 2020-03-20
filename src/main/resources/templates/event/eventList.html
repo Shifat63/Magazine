@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org" th:replace="~{fragments/adminLayout :: layout (~{::body},'adminPanel')}">
+<body>
+<h1 th:text="'Events'"></h1>
+<table id="events" class="table table-striped table-hover">
+    <thead>
+        <tr>
+            <th>Serial</th>
+            <th>Name</th>
+            <th>View</th>
+            <th>Edit</th>
+            <th>Delete</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr th:each="event, i : ${events}">
+            <td th:text="${i.count}">
+            </td>
+            <td th:text="${event.getName()}">
+            </td>
+            <td>
+                <a th:href="@{/event/view/__${event.getEventId()}__}">View</a>
+            </td>
+            <td>
+                <a th:href="@{/event/edit/__${event.getEventId()}__}">Edit</a>
+            </td>
+            <td>
+                <a th:href="@{/event/delete/__${event.getEventId()}__}">Delete</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+</body>
+</html>
+

@@ -39,18 +39,16 @@ public class GenericController {
 	@RequestMapping(value = {"/contactTicket"}, method = RequestMethod.POST)
     public String postContactTicket(@Valid @ModelAttribute("contactTicket") ContactTicket contactTicket, BindingResult bindingResult, Model model) throws Exception
     {
-        model.addAttribute("sliders", contentService.getSliderContents(true));
-        model.addAttribute("frontContents", contentService.getFrontContents(true));
-        model.addAttribute("frontEvents", eventService.getFrontEvents(true));
-        model.addAttribute("activeFrontMessages", frontMessageService.getActiveFrontMessages(true));
         if(bindingResult.hasErrors())
         {
+            model.addAttribute("sliders", contentService.getSliderContents(true));
+            model.addAttribute("frontContents", contentService.getFrontContents(true));
+            model.addAttribute("frontEvents", eventService.getFrontEvents(true));
+            model.addAttribute("activeFrontMessages", frontMessageService.getActiveFrontMessages(true));
             return "index";
         }
         ContactTicket savedContactTicket = contactTicketService.save(contactTicket);
-        contactTicket = new ContactTicket();
-        model.addAttribute("contactTicket", contactTicket);
-        return "index";
+        return "redirect:/";
     }
 
     @RequestMapping({"/contents"})

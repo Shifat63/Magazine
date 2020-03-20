@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org" th:replace="~{fragments/adminLayout :: layout (~{::body},'adminPanel')}">
+<body>
+<h1 th:if="${message.getFrontMessageId()==null}" th:text="'Add Message'"></h1>
+<h1 th:unless="${message.getFrontMessageId()==null}" th:text="'Edit Message'"></h1>
+<form action="#" th:action="@{/message/addOrEditMessage}" th:object="${message}" class="was-validated" method="post">
+    <div th:if="${#fields.hasErrors('*')}" class="alert alert-danger">
+        <p>Please correct the following errors.</p>
+    </div>
+    <input type="hidden" th:field="*{frontMessageId}" id="frontMessageId" name="frontMessageId">
+    <div class="form-group">
+        <label>Message Body: </label>
+        <textarea class="form-control" rows="3" th:field="*{messageBody}"></textarea>
+        <div class="alert alert-danger" th:if="${#fields.hasErrors('messageBody')}">
+            <ul>
+                <li th:each="err : ${#fields.errors('messageBody')}" th:text="${err}"/>
+            </ul>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="isActive">Status:</label>
+        <select th:field="*{isActive}" name="isActive" id="isActive" class="form-control browser-default custom-select">
+            <option value="true">Active</option>
+            <option value="false">Inactive</option>
+        </select>
+        <div th:if="${#fields.hasErrors('isActive')}" class="alert alert-danger">
+            <ul>
+                <li th:each="err : ${#fields.errors('isActive')}" th:text="${err}" ></li>
+            </ul>
+        </div>
+    </div>
+    <button type="submit" class="btn btn-primary">Save</button>
+</form>
+</body>
+</html>
+
