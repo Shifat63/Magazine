@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org" th:replace="~{fragments/adminLayout :: layout (~{::body},'adminPanel')}">
+<body>
+<h1 th:text="'Content Details'"></h1>
+<table id="contentDetails" class="table table-striped table-hover">
+    <tr>
+        <th>Content Headline: </th>
+        <td th:text="${content.getHeadline()}"></td>
+    </tr>
+    <tr>
+        <th>Content Teaser: </th>
+        <td th:text="${content.getTeaser()}"></td>
+    </tr>
+    <tr>
+        <th>Content Text: </th>
+        <td th:text="${content.getContentText()}"></td>
+    </tr>
+    <tr>
+        <th>Content Language: </th>
+        <td>
+            <span th:if="${content.getLanguage() == 'en'}" th:text="'English'"></span>
+            <span th:if="${content.getLanguage() == 'bn'}" th:text="'Bengali'"></span>
+            <span th:if="${content.getLanguage() == 'de'}" th:text="'Deutsch'"></span>
+        </td>
+    </tr>
+    <tr>
+        <th>Creation Date: </th>
+        <td th:text="${content.getCreationDate()}"></td>
+    </tr>
+    <tr>
+        <th>Content Creator: </th>
+        <td>
+            <a th:href="@{/user/view/__${content.getUser().getUserId()}__}" th:text="${content.getUser().getFirstName() + ' ' + content.getUser().getLastName()}" /></a>
+        </td>
+    </tr>
+    <tr>
+        <th>Content Category: </th>
+        <td th:text="${content.getContentCategory().getName()}"></td>
+    </tr>
+    <tr>
+        <th>Show on Front Page: </th>
+        <td>
+            <span th:if="${content.getIsFront() == true}" th:text="'Yes'"></span>
+            <span th:unless="${content.getIsFront() == true}" th:text="'No'"></span>
+        </td>
+    </tr>
+    <tr>
+        <th>Show in Slider: </th>
+        <td>
+            <span th:if="${content.getIsSlider() == true}" th:text="'Yes'"></span>
+            <span th:unless="${content.getIsSlider() == true}" th:text="'No'"></span>
+        </td>
+    </tr>
+    <tr>
+        <th>Content Keyword: </th>
+        <td th:text="${content.getKeyword()}"></td>
+    </tr>
+    <tr>
+        <th>Translation of: </th>
+        <td th:if="${translationOf==null}" > - </td>
+        <td th:unless="${translationOf==null}"  >
+            <a th:href="@{/content/view/__${translationOf.getContentId()}__}" th:text="${translationOf.getHeadline()}"/></a>
+        </td>
+    </tr>
+    <tr>
+        <th>Images: </th>
+        <td>
+            <table id="userContents" class="table table-striped table-hover">
+                <thead>
+                    <tr>
+                        <th>Serial</th>
+                        <th>Position</th>
+                        <th>Image</th>
+                    </tr>
+                </thead>
+                <tbody th:if="${translationOf==null}">
+                    <tr th:each="image, i : ${content.getContentImageSet()}">
+                        <td th:text="${i.count}"></td>
+                        <td th:text="${image.getPosition()}"></td>
+                        <td>
+                            <div class="content_page_item_img">
+                                <img class="card-img rounded-0" th:src="@{/MagazineFiles/contentImage/__${content.getContentId()}__/__${image.getPosition()}__.jpg}" alt="Content Image">
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+                <tbody th:unless="${translationOf==null}">
+                    <tr th:each="image, i : ${translationOf.getContentImageSet()}">
+                        <td th:text="${i.count}"></td>
+                        <td th:text="${image.getPosition()}"></td>
+                        <td>
+                            <div class="content_page_item_img">
+                                <img class="card-img rounded-0" th:src="@{/MagazineFiles/contentImage/__${translationOf.getContentId()}__/__${image.getPosition()}__.jpg}" alt="Content Image">
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+    </tr>
+    <tr>
+        <td>
+        </td>
+        <td>
+            <a class="btn btn-outline-info" th:href="@{'/content/edit/' + ${content.getContentId()}}">Edit</a>
+        </td>
+    </tr>
+</table>
+</body>
+</html>
+

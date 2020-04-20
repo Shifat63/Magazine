@@ -25,9 +25,6 @@ public class ContentImage implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "content_image_id")
     private Integer contentImageId;
-	
-    @Column(name = "location")
-    private String location;
     
     @NotNull(message = "Image position must not be empty")
     @Column(name = "position")

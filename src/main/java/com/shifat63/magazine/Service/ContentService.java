@@ -8,4 +8,5 @@ public interface ContentService extends CrudService<Content, Integer> {
 	public Set<Content> getSliderContents(Boolean isSlider);
 	public Set<Content> getFrontContents(Boolean isFront);
 	public Set<Content> getContentsSearchedByKeyword(String keyword);
+	public Set<Content> getTranslatedContents(Integer parentContent);
 }

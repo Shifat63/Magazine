@@ -39,6 +39,14 @@
         </td>
     </tr>
     <tr>
+        <th>Image: </th>
+        <td>
+            <div class="content_page_item_img">
+                <img class="card-img rounded-0" th:src="@{/MagazineFiles/eventImage/__${event.getEventId()}__.jpg}" alt="Event Image">
+            </div>
+        </td>
+    </tr>
+    <tr>
         <td></td>
         <td>
             <a class="btn btn-outline-info" th:href="@{'/event/edit/' + ${event.getEventId()}}">Edit</a>

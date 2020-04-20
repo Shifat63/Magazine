@@ -17,7 +17,7 @@
                 <div class="col-md-6 col-lg-6" th:each="frontContent, i : ${frontContents}">
                     <div class="single_content d-flex align-items-center">
                         <div class="thumb">
-                            <img th:src="@{/resources/images/contentImage/__${frontContent.getContentId()}__/banner.jpg}" alt="Content image" />
+                            <img th:src="@{/MagazineFiles/contentImage/__${frontContent.getContentId()}__/banner.jpg}" alt="Content image" />
                         </div>
                         <div class="info">
                             <h3><a th:text="${frontContent.getHeadline()}" th:href="@{/contents/__${frontContent.getContentId()}__}">Content Headline</a></h3>
@@ -43,7 +43,7 @@
         <div class="event_here">
             <div class="single_event" th:each="frontEvent, i : ${frontEvents}">
                 <div class="room_thumb">
-                    <img th:src="@{/resources/images/eventImage/__${frontEvent.getEventId()}__.jpg}" alt="Event image" />
+                    <img th:src="@{/MagazineFiles/eventImage/__${frontEvent.getEventId()}__.jpg}" alt="Event image" />
                     <div class="room_heading d-flex justify-content-between align-items-center">
                         <div class="room_heading_inner">
                         	<span th:text="${frontEvent.getDatetime()}">Event date</span>

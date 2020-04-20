@@ -44,7 +44,7 @@
                 <tr th:each="content, i : ${user.getContentSet()}">
                     <td th:text="${i.count}"></td>
                     <td>
-                        <a th:href="''" th:text="${content.getHeadline()}"/></a>
+                        <a th:href="@{/content/view/__${content.getContentId()}__}" th:text="${content.getHeadline()}"/></a>
                     </td>
                 </tr>
                 </tbody>

@@ -11,7 +11,7 @@
                 <div class="blog_left_sidebar">
                     <article class="content_page_item" th:each="content, i : ${contents}">
                         <div class="content_page_item_img">
-                            <img class="card-img rounded-0" th:src="@{/resources/images/contentImage/__${content.getContentId()}__/banner.jpg}" alt="Content Image">
+                            <img class="card-img rounded-0" th:src="@{/MagazineFiles/contentImage/__${content.getContentId()}__/banner.jpg}" alt="Content Image">
                             <a href="" class="content_page_item_date">
                                 <h3 th:text="${content.getUser().getFirstName() + ' ' + content.getUser().getLastName()}">Content writer</h3>
                                 <p th:text="${content.getCreationDate()}">Content date</p>

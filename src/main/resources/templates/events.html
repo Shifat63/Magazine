@@ -11,7 +11,7 @@
                 <div class="blog_left_sidebar">
                     <article class="content_page_item" th:each="event, i : ${events}">
                         <div class="content_page_item_img">
-                            <img class="card-img rounded-0" th:src="@{/resources/images/eventImage/__${event.getEventId()}__.jpg}" alt="Event Image">
+                            <img class="card-img rounded-0" th:src="@{/MagazineFiles/eventImage/__${event.getEventId()}__.jpg}" alt="Event Image">
                             <a href="" class="content_page_item_date">
                                 <h3 th:text="${'$' + event.getTicketPrice()}">Event ticket price</h3>
                                 <p th:text="${event.getDatetime()}">Event schedule</p>

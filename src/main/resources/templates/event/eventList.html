@@ -7,6 +7,7 @@
         <tr>
             <th>Serial</th>
             <th>Name</th>
+            <th>Is Front</th>
             <th>View</th>
             <th>Edit</th>
             <th>Delete</th>
@@ -17,6 +18,10 @@
             <td th:text="${i.count}">
             </td>
             <td th:text="${event.getName()}">
+            </td>
+            <td>
+                <span th:if="${event.getIsFront() == true}" th:text="'Yes'"></span>
+                <span th:unless="${event.getIsFront() == true}" th:text="'No'"></span>
             </td>
             <td>
                 <a th:href="@{/event/view/__${event.getEventId()}__}">View</a>

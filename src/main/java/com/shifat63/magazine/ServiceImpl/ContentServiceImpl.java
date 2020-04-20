@@ -74,4 +74,11 @@ public class ContentServiceImpl implements ContentService {
 		return contentSet;
 	}
 
+	@Override
+	public Set<Content> getTranslatedContents(Integer parentContent) {
+		Set<Content> contentSet = new HashSet<>();
+		contentRepository.findByTranslationOf(parentContent).forEach(contentSet::add);
+		return contentSet;
+	}
+
 }
